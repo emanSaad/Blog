@@ -1,0 +1,25 @@
+body{
+    padding: 56px;
+}
+
+/* #post-title{
+    padding-top: 20px;
+} */
+
+.post-content{
+    padding-top: 20px;
+}
+
+#selectAuth{
+    padding-top: 30px;
+}
+
+.postBtn{
+    margin-top: 20px;
+    height: 40px;
+
+}
+
+.author{
+    margin-right: 20px;
+}

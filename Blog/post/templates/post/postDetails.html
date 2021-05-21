@@ -1,0 +1,60 @@
+{% extends "post/layout.html" %}
+
+{% block head %}
+Blog
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-2">
+                    <a href="{% url 'index' %}">All Posts</a>
+                </div>
+                <div class="col-2">
+                    <a href="{% url 'createPost' %}">Create Post</a>
+                </div>
+                <div class="col-2">
+                    <a href="{% url 'editPost' post.id %}">Edit Post</a>
+                </div>
+                <div class="col-2">
+                    <form method="POST" action="{% url 'deletePost' post.id %}">
+                        {% csrf_token %}
+                        <input class="btn btn-link" type="submit" value="Delete">
+                    </form>
+                    <!-- <a href="{% url 'deletePost' post.id %}">Delete Post</a> -->
+                </div>
+            </div>
+        </div>
+        <hr class="my-4">
+        <div class="panel-body">
+            <h2>Post Details: </h2>
+
+            
+            <div>
+                <strong id="post-title">{{ post.title }}: </strong>
+                <div class="post-content">
+                    {{ post.content }}
+                </div>
+                <hr class="my-4">
+            </div>
+            <!-- form to select author
+
+            <div class="select-auth">
+                <p id="selectAuth"><small>Select an auhtor to display all his posts:</small> </p>
+                <form class="form-inline" method="POST" action="{% url 'authorPosts' %}">
+                    {% csrf_token %}
+                    <select name="author">
+                        {% for author in authors %}
+                        <option value="{{author.id}}">{{ author.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit" value="Select Author">
+                </form>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}

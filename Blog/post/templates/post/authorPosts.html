@@ -1,0 +1,16 @@
+{% extends "post/layout.html" %}
+
+{% block body %}
+<h1>All Posts By Author: {{ author.name }}</h1>
+<div class="main-content">
+    {% for post in authPosts %}
+        <strong>{{ post.title }}: </strong>
+        <div class="post-content">
+            {{ post.content }}
+        </div>
+        <hr class="my-4">
+    {% endfor %}
+
+    <a href="{% url 'index' %}">Back</a>
+</div>
+{%  endblock %}

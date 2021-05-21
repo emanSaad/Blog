@@ -1,0 +1,33 @@
+{% extends "post/layout.html" %}
+
+{% block head %}
+    Blog
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h2>All Posts</h2>
+    <ul style="line-height:1.9;">
+        {% for post in posts %}
+        <a href="{% url 'postDetails' post.id %}">
+            <li><strong id="post-title">{{ post.title }}: Written by {{ post.author }}</strong></li>
+        </a>    
+        
+        {% endfor %}
+    </ul>
+    <!-- form to select author -->
+    <div class="select-auth">
+        <p id="selectAuth"><small>Select an auhtor to display all his posts:</small> </p>
+        <form class="form-inline" method="POST" action="{% url 'authorPosts' %}">
+            {% csrf_token %}
+            <select name="author">
+                {% for author in authors %}
+                <option value="{{author.id}}">{{ author.name }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Select Author">
+        </form>
+    </div>
+</div>
+
+{% endblock %}
